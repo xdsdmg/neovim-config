@@ -92,10 +92,9 @@ return {
       })
 
       -- Setup language servers.
-      local lspconfig = require('lspconfig')
-      lspconfig.lua_ls.setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
+      vim.lsp.config('lua_ls', {
+        -- capabilities = capabilities,
+        -- on_attach = on_attach,
         settings = {
           Lua = {
             diagnostics = {
@@ -103,8 +102,16 @@ return {
             }
           }
         }
-      }
+      })
+      vim.lsp.enable('lua_ls')
 
+      vim.lsp.config('clangd', {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+      vim.lsp.enable('clangd')
+
+      --[[
       lspconfig["gopls"].setup {
         capabilities = capabilities,
         on_attach = on_attach,
@@ -120,16 +127,18 @@ return {
         on_attach = on_attach,
       }
 
-      -- lspconfig["java_language_server"].setup {
-      --   capabilities = capabilities,
-      --   on_attach = on_attach,
-      -- }
+      lspconfig["java_language_server"].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
 
       require 'lspconfig'.java_language_server.setup {}
 
       require 'lspconfig'.pyright.setup {}
+      ]]
     end
   },
+  --[[
   {
     "jose-elias-alvarez/null-ls.nvim",
     init = function()
@@ -143,6 +152,7 @@ return {
       })
     end
   },
+  ]]
   {
     "nvim-treesitter/nvim-treesitter",
     init = function()

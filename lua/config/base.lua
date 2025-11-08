@@ -22,7 +22,7 @@ vim.cmd([[syntax on]])
 vim.cmd([[filetype plugin indent on]])
 
 opt.background = "dark"
--- vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme gruvbox]])
 
 opt.cursorline = true
 vim.cmd [[autocmd WinLeave * setlocal nocursorline]]
