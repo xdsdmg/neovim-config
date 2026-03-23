@@ -111,6 +111,16 @@ return {
       })
       vim.lsp.enable('clangd')
 
+      --Enable (broadcasting) snippet capability for completion
+      local html_capabilities = vim.lsp.protocol.make_client_capabilities()
+      html_capabilities.textDocument.completion.completionItem.snippetSupport = true
+      vim.lsp.config('html', {
+        capabilities = html_capabilities,
+      })
+      vim.lsp.enable('html')
+
+      vim.lsp.enable('ts_ls')
+
       --[[
       lspconfig["gopls"].setup {
         capabilities = capabilities,
