@@ -1,5 +1,11 @@
 # Neovim Configuration
 
+``` text
+NVIM v0.11.6
+Build type: Release
+LuaJIT 2.1.1741730670
+```
+
 Modular Neovim config using [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 
 ## Project Structure

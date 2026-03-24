@@ -2,17 +2,11 @@ return {
   {
     'williamboman/mason.nvim',
     event = "VeryLazy",
-    init = function()
-      require("mason").setup()
-    end
+    init = function() require("mason").setup() end
   },
   {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-nvim-lsp',
-      'L3MON4D3/LuaSnip'
-    },
+    dependencies = { 'hrsh7th/nvim-cmp', 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip' },
     init = function()
       local cmp = require('cmp');
       cmp.setup({
@@ -95,6 +89,8 @@ return {
       vim.lsp.config('lua_ls', {
         -- capabilities = capabilities,
         -- on_attach = on_attach,
+        filetypes = { 'lua' },
+        cmd = { 'lua-language-server' },
         settings = {
           Lua = {
             diagnostics = {
@@ -108,6 +104,8 @@ return {
       vim.lsp.config('clangd', {
         capabilities = capabilities,
         on_attach = on_attach,
+        filetypes = { 'c', 'cpp' },
+        cmd = { 'clangd' },
       })
       vim.lsp.enable('clangd')
 
@@ -116,9 +114,15 @@ return {
       html_capabilities.textDocument.completion.completionItem.snippetSupport = true
       vim.lsp.config('html', {
         capabilities = html_capabilities,
+        filetypes = { 'html' },
+        cmd = { 'true' },
       })
       vim.lsp.enable('html')
 
+      vim.lsp.config('ts_ls', {
+        filetypes = { 'ts', 'tsx' },
+        cmd = { 'typescript-language-server' },
+      })
       vim.lsp.enable('ts_ls')
 
       --[[
