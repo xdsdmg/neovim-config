@@ -120,8 +120,13 @@ return {
       vim.lsp.enable('html')
 
       vim.lsp.config('ts_ls', {
-        filetypes = { 'ts', 'tsx' },
-        cmd = { 'typescript-language-server' },
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        },
+        cmd = { 'typescript-language-server', '--stdio' },
       })
       vim.lsp.enable('ts_ls')
 
